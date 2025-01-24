@@ -5,6 +5,7 @@ import com.AoChen.adapter.LegacyRectangle;
 import com.AoChen.adapter.RectangleAdapter;
 import com.AoChen.adapter.Shape2;
 import com.AoChen.bridge.*;
+import com.AoChen.builder.*;
 import com.AoChen.factoryMethod.CircleFactory;
 import com.AoChen.factoryMethod.Shape3;
 import com.AoChen.factoryMethod.ShapeFactory;
@@ -45,7 +46,19 @@ public class Main {
 //        templateMethodPatternExample();
 //        visitorPatternExample();
 //        abstractFactoryExample();
+        builderPatternExample();
+    }
 
+    private static void builderPatternExample() {
+        HouseBuilder concreteHouseBuilder = new ConcreteHouseBuilder();
+        Director director1 = new Director(concreteHouseBuilder);
+        House constructHouse = director1.constructHouse();
+        System.out.println("Construct House: " + constructHouse);
+
+        HouseBuilder luxuryHouseBuilder = new LuxuryHouseBuilder();
+        Director director2 = new Director(luxuryHouseBuilder);
+        House luxuryHouse = director2.constructHouse();
+        System.out.println("Luxury House: " + luxuryHouse);
     }
 
     private static void abstractFactoryExample() {
