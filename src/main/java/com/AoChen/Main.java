@@ -1,5 +1,6 @@
 package com.AoChen;
 
+import com.AoChen.abstractFactory.*;
 import com.AoChen.adapter.LegacyRectangle;
 import com.AoChen.adapter.RectangleAdapter;
 import com.AoChen.adapter.Shape2;
@@ -43,7 +44,24 @@ public class Main {
 //        strategyPatternExample();
 //        templateMethodPatternExample();
 //        visitorPatternExample();
+//        abstractFactoryExample();
 
+    }
+
+    private static void abstractFactoryExample() {
+        SoftwareFactory windowsFactory = new WindowsFactory();
+        OperatingSystem windowsOS = windowsFactory.createOperatingSystem();
+        Application windowsApp = windowsFactory.createApplication();
+
+        windowsOS.run();
+        windowsApp.open();
+
+        SoftwareFactory linuxFactory = new LinuxFactory();
+        OperatingSystem linuxOS = linuxFactory.createOperatingSystem();
+        Application linuxApp = linuxFactory.createApplication();
+
+        linuxOS.run();
+        linuxApp.open();
     }
 
     /**
